@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Conneqt\SpecialPrices\Api\SpecialPriceCalculatorInterface" type="Conneqt\SpecialPrices\Model\Calculator\SpecialPriceCalculator" />
+
+    <virtualType name="Magento\Catalog\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
+        <arguments>
+            <argument name="prices" xsi:type="array">
+                <item name="conneqt_special_price" xsi:type="string">Conneqt\SpecialPrices\Pricing\Price\SpecialPrice</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

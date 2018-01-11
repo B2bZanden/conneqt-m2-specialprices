@@ -1,0 +1,45 @@
+{
+    "name": "conneqt/m2-specialprices",
+    "description": "Conneqt Special Prices Module for Magento 2",
+    "require": {
+        "php": "~7.0|~7.1",
+        "magento/framework": ">=100.1.0,<=100.1.10|101.0.0|101.0.1"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Conneqt",
+            "email": "hello@conneqt.io",
+            "homepage": "https://www.conneqt.io"
+        }
+    ],
+    "support": {
+        "email": "support@conneqt.io",
+        "issues": "https://git.dev.epartment.nl/conneqt/m2-specialprices/issues"
+    },
+    "homepage": "https://www.conneqt.io",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Conneqt\\SpecialPrices\\": ""
+        }
+    },
+    "extra": {
+        "map": [
+            [
+                "*",
+                "Conneqt/SpecialPrices"
+            ]
+        ]
+    },
+    "repositories": {
+        "magento": {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    }
+}
