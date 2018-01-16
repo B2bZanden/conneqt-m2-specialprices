@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route method="GET" url="/V1/conneqt_specialprices/:id">
+        <service class="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Conneqt_Base::special_prices" />
+        </resources>
+    </route>
+    <route method="GET" url="/V1/conneqt_specialprices">
+        <service class="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Conneqt_Base::special_prices" />
+        </resources>
+    </route>
+    <route method="POST" url="/V1/conneqt_specialprices">
+        <service class="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Conneqt_Base::special_prices" />
+        </resources>
+    </route>
+    <route method="PUT" url="/V1/conneqt_specialprices">
+        <service class="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Conneqt_Base::special_prices" />
+        </resources>
+    </route>
+    <route method="DELETE" url="/V1/conneqt_specialprices">
+        <service class="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" method="delete"/>
+        <resources>
+            <resource ref="Conneqt_Base::special_prices" />
+        </resources>
+    </route>
+</routes>

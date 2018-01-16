@@ -39,6 +39,12 @@ class SpecialPrice extends AbstractPrice implements BasePriceProviderInterface
     public function getValue()
     {
         $customerId = $this->customerSession->isLoggedIn() ? $this->customerSession->getCustomerId() : null;
-        return $this->specialPriceCalculator->calculate($this->getProduct()->getId(), $customerId, $this->getQuantity());
+
+        return $this->specialPriceCalculator->calculate(
+            $this->getProduct()->getId(),
+            $customerId,
+            $this->getProduct()->getPriceInfo()->getPrice(\Magento\Catalog\Pricing\Price\BasePrice::PRICE_CODE)->getValue(),
+            $this->getQuantity()
+        );
     }
 }

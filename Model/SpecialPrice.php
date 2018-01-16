@@ -82,7 +82,7 @@ class SpecialPrice extends \Magento\Framework\Model\AbstractModel implements \Co
      */
     public function getType()
     {
-        return $this->getData(self::TYPE);
+        return intval($this->getData(self::TYPE));
     }
 
     /**
@@ -105,7 +105,7 @@ class SpecialPrice extends \Magento\Framework\Model\AbstractModel implements \Co
      */
     public function getValue()
     {
-        return $this->getData(self::VALUE);
+        return doubleval($this->getData(self::VALUE));
     }
 
     /**

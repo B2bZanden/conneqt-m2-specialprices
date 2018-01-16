@@ -33,6 +33,12 @@ class PriceObserver implements \Magento\Framework\Event\ObserverInterface
 
         $customerId = $this->customerSession->isLoggedIn() ? $this->customerSession->getCustomerId() : null;
 
-        $product->setData('final_price', $this->specialPriceCalculator->calculate($product->getId(), $customerId, $qty));
+        $finalPrice = $this->specialPriceCalculator->calculate(
+            $product->getId(),
+            $customerId,
+            $qty
+        );
+
+        $product->setData('final_price', $finalPrice);
     }
 }
