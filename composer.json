@@ -2,8 +2,7 @@
     "name": "conneqt/m2-specialprices",
     "description": "Conneqt Special Prices Module for Magento 2",
     "require": {
-        "php": "~7.0|~7.1",
-        "magento/framework": ">=100.1.0,<=100.1.10|101.0.0|101.0.1",
+        "magento/framework": ">=101.0.0",
         "conneqt/m2-base": ">=1.0"
     },
     "type": "magento2-module",
