@@ -6,7 +6,7 @@
         "conneqt/m2-base": ">=1.0"
     },
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "1.0.3",
     "license": "MIT",
     "authors": [
         {
@@ -27,14 +27,6 @@
         "psr-4": {
             "Conneqt\\SpecialPrices\\": ""
         }
-    },
-    "extra": {
-        "map": [
-            [
-                "*",
-                "Conneqt/SpecialPrices"
-            ]
-        ]
     },
     "repositories": {
         "magento": {
