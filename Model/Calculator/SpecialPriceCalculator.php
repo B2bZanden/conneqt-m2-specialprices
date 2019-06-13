@@ -27,13 +27,13 @@ class SpecialPriceCalculator implements \Conneqt\SpecialPrices\Api\SpecialPriceC
      *
      * @param $productId int
      * @param $customerId int
+     * @param $basePrice
      * @param $qty int
      * @return double
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function calculate($productId, $customerId, $qty)
+    public function calculate($productId, $customerId, $basePrice, $qty)
     {
-        $basePrice = $this->_productRepository->getById($productId)->getPrice();
-
         $productSpecialPriceCollection = $this->_collectionFactory->create()
                                                         ->addFieldToFilter('product_id', ['eq' => $productId])
                                                         ->addFieldToFilter('customer_id', ['null' => true]);

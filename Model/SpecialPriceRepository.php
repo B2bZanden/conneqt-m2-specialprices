@@ -78,7 +78,7 @@ class SpecialPriceRepository implements \Conneqt\SpecialPrices\Api\SpecialPriceR
         return $this->buildSearchResult($searchCriteria, $collection);
     }
 
-    private function addFiltersToCollection(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria, Collection $collection)
+    private function addFiltersToCollection(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria, \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPrice\Collection $collection)
     {
         foreach ($searchCriteria->getFilterGroups() as $filterGroup) {
             $fields = $conditions = [];
@@ -90,7 +90,7 @@ class SpecialPriceRepository implements \Conneqt\SpecialPrices\Api\SpecialPriceR
         }
     }
 
-    private function addSortOrdersToCollection(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria, Collection $collection)
+    private function addSortOrdersToCollection(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria, \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPrice\Collection $collection)
     {
         foreach ((array) $searchCriteria->getSortOrders() as $sortOrder) {
             $direction = $sortOrder->getDirection() == SortOrder::SORT_ASC ? 'asc' : 'desc';
@@ -98,19 +98,17 @@ class SpecialPriceRepository implements \Conneqt\SpecialPrices\Api\SpecialPriceR
         }
     }
 
-    private function addPagingToCollection(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria, Collection $collection)
+    private function addPagingToCollection(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria, \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPrice\Collection $collection)
     {
         $collection->setPageSize($searchCriteria->getPageSize());
         $collection->setCurPage($searchCriteria->getCurrentPage());
     }
 
-    private function buildSearchResult(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria, Collection $collection)
+    private function buildSearchResult(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria, \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPrice\Collection $collection)
     {
-        $searchResults = $this->searchResultFactory->create();
+        $searchResults = $this->_specialPriceSearchResultInterfaceFactory->create();
 
-        $searchResults->setSearchCriteria($searchCriteria);
         $searchResults->setItems($collection->getItems());
-        $searchResults->setTotalCount($collection->getSize());
 
         return $searchResults;
     }

@@ -15,8 +15,9 @@ interface SpecialPriceCalculatorInterface
      *
      * @param $productId int
      * @param $customerId int
+     * @param $basePrice double
      * @param $qty int
      * @return double
      */
-    public function calculate($productId, $customerId, $qty);
+    public function calculate($productId, $customerId, $basePrice, $qty);
 }

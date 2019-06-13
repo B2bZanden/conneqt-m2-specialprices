@@ -12,7 +12,7 @@ namespace Conneqt\SpecialPrices\Model;
  * @method \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPrice getResource()
  * @method \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPrice\Collection getCollection()
  */
-class SpecialPrice extends \Magento\Framework\Model\AbstractModel implements \Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface,
+class SpecialPrice extends \Magento\Framework\Model\AbstractExtensibleModel implements \Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface,
     \Magento\Framework\DataObject\IdentityInterface
 {
     const CACHE_TAG = 'conneqt_specialprices_specialprice';
@@ -119,5 +119,28 @@ class SpecialPrice extends \Magento\Framework\Model\AbstractModel implements \Co
         $this->setData(self::VALUE, $value);
 
         return $this;
+    }
+
+    /**
+     * @return \Conneqt\SpecialPrices\Api\Data\SpecialPriceExtensionInterface
+     */
+    public function getExtensionAttributes()
+    {
+        $extensionAttributes = $this->_getExtensionAttributes();
+        if (null === $extensionAttributes) {
+            /** @var \Conneqt\SpecialPrices\Api\Data\SpecialPriceExtensionInterface $extensionAttributes */
+            $extensionAttributes = $this->extensionAttributesFactory->create(\Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface::class);
+            $this->setExtensionAttributes($extensionAttributes);
+        }
+        return $extensionAttributes;
+    }
+
+    /**
+     * @param \Conneqt\SpecialPrices\Api\Data\SpecialPriceExtensionInterface $extensionAttributes
+     * @return \Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface
+     */
+    public function setExtensionAttributes(\Conneqt\SpecialPrices\Api\Data\SpecialPriceExtensionInterface $extensionAttributes)
+    {
+        return $this->_setExtensionAttributes($extensionAttributes);
     }
 }

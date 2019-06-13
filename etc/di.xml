@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Conneqt\SpecialPrices\Api\SpecialPriceCalculatorInterface" type="Conneqt\SpecialPrices\Model\Calculator\SpecialPriceCalculator" />
-
     <preference for="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" type="Conneqt\SpecialPrices\Model\SpecialPriceRepository" />
     <preference for="Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface" type="Conneqt\SpecialPrices\Model\SpecialPrice" />
     <preference for="Conneqt\SpecialPrices\Api\Data\SpecialPriceSearchResultInterface" type="Conneqt\SpecialPrices\Model\SpecialPriceSearchResult" />

@@ -8,7 +8,7 @@
 
 namespace Conneqt\SpecialPrices\Api\Data;
 
-interface SpecialPriceInterface
+interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
     const ENTITY_ID = 'entity_id';
     const PRODUCT_ID = 'product_id';
@@ -92,4 +92,15 @@ interface SpecialPriceInterface
      * @return $this
      */
     public function setValue($value);
+
+    /**
+     * @return \Conneqt\SpecialPrices\Api\Data\SpecialPriceExtensionInterface
+     */
+    public function getExtensionAttributes();
+
+    /**
+     * @param \Conneqt\SpecialPrices\Api\Data\SpecialPriceExtensionInterface $extensionAttributes
+     * @return $this
+     */
+    public function setExtensionAttributes(\Conneqt\SpecialPrices\Api\Data\SpecialPriceExtensionInterface $extensionAttributes);
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="conneqt" translate="label" sortOrder="1000">
+            <label>CONNEQT</label>
+        </tab>
+        <section id="conneqt_specialprices" translate="label" showInDefault="1" showInWebsite="1" showInStore="0">
+            <tab>conneqt</tab>
+            <label>Special Prices</label>
+            <resource>Conneqt_SpecialPrices::special_prices</resource>
+            <group id="settings" translate="label" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Settings</label>
+            </group>
+        </section>
+    </system>
+</config>
