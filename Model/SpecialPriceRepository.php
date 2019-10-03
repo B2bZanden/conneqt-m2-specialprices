@@ -10,6 +10,8 @@ namespace Conneqt\SpecialPrices\Model;
 
 class SpecialPriceRepository implements \Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface
 {
+    /** @var \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPriceFactory */
+    protected $specialResourceModelFactory;
     private $_specialPriceFactory;
     private $_specialPriceCollectionFactory;
     private $_specialPriceSearchResultInterfaceFactory;
@@ -17,11 +19,13 @@ class SpecialPriceRepository implements \Conneqt\SpecialPrices\Api\SpecialPriceR
     public function __construct(
         SpecialPriceFactory $specialPriceFactory,
         \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPrice\CollectionFactory $specialPriceCollectionFactory,
-        \Conneqt\SpecialPrices\Api\Data\SpecialPriceSearchResultInterfaceFactory $specialPriceSearchResultInterfaceFactory
+        \Conneqt\SpecialPrices\Api\Data\SpecialPriceSearchResultInterfaceFactory $specialPriceSearchResultInterfaceFactory,
+        \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPriceFactory $specialResourceModelFactory
     ) {
         $this->_specialPriceFactory = $specialPriceFactory;
         $this->_specialPriceCollectionFactory = $specialPriceCollectionFactory;
         $this->_specialPriceSearchResultInterfaceFactory = $specialPriceSearchResultInterfaceFactory;
+        $this->specialResourceModelFactory = $specialResourceModelFactory;
     }
 
     /**
@@ -56,9 +60,14 @@ class SpecialPriceRepository implements \Conneqt\SpecialPrices\Api\SpecialPriceR
      * @param \Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface $specialPrice
      * @return void
      */
-    public function delete(\Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface $specialPrice)
+    public function delete($id)
     {
-        $specialPrice->getResource()->delete($specialPrice);
+        /** @var \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPrice $specialResourceModel */
+        $specialResourceModel = $this->specialResourceModelFactory->create();
+        $specialPrice = $this->_specialPriceFactory->create();
+
+        $specialResourceModel->load($specialPrice, $id);
+        $specialResourceModel->delete($specialPrice);
     }
 
     /**

@@ -24,10 +24,10 @@ interface SpecialPriceRepositoryInterface
     public function save(\Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface $specialPrice);
 
     /**
-     * @param \Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface $specialPrice
+     * @param int $id
      * @return void
      */
-    public function delete(\Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface $specialPrice);
+    public function delete($id);
 
     /**
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria

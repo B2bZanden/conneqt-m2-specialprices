@@ -24,7 +24,7 @@
             <resource ref="Conneqt_Base::special_prices" />
         </resources>
     </route>
-    <route method="DELETE" url="/V1/conneqt_specialprices">
+    <route method="DELETE" url="/V1/conneqt_specialprices/:id">
         <service class="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" method="delete"/>
         <resources>
             <resource ref="Conneqt_Base::special_prices" />
