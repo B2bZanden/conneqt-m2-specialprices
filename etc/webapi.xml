@@ -30,4 +30,16 @@
             <resource ref="Conneqt_Base::special_prices" />
         </resources>
     </route>
+    <route method="POST" url="/V1/conneqt_specialprices_bulk">
+        <service class="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" method="bulkUpdate"/>
+        <resources>
+            <resource ref="Conneqt_Base::special_prices" />
+        </resources>
+    </route>
+    <route method="POST" url="/V1/conneqt_specialprices_bulk_delete">
+        <service class="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" method="bulkDelete"/>
+        <resources>
+            <resource ref="Conneqt_Base::special_prices" />
+        </resources>
+    </route>
 </routes>

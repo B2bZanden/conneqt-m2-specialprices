@@ -34,4 +34,16 @@ interface SpecialPriceRepositoryInterface
      * @return \Conneqt\SpecialPrices\Api\Data\SpecialPriceSearchResultInterface
      */
     public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria);
+
+    /**
+     * @param \Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface[] $specialPrices
+     * @return \Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface[]
+     */
+    public function bulkUpdate(array $specialPrices);
+
+    /**
+     * @param int[] $specialPriceIds
+     * @return bool
+     */
+    public function bulkDelete(array $specialPriceIds);
 }

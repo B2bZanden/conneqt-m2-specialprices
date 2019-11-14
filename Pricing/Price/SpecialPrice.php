@@ -13,6 +13,8 @@ use Magento\Framework\Pricing\Price\BasePriceProviderInterface;
 
 class SpecialPrice extends AbstractPrice implements BasePriceProviderInterface
 {
+    const PRICE_CODE = 'conneqt_special_price';
+
     protected $customerSession;
 
     protected $specialPriceCalculator;

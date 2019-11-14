@@ -16,16 +16,23 @@ class SpecialPriceRepository implements \Conneqt\SpecialPrices\Api\SpecialPriceR
     private $_specialPriceCollectionFactory;
     private $_specialPriceSearchResultInterfaceFactory;
 
+    /**
+     * @var \Magento\Framework\DB\TransactionFactory
+     */
+    private $transactionFactory;
+
     public function __construct(
         SpecialPriceFactory $specialPriceFactory,
         \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPrice\CollectionFactory $specialPriceCollectionFactory,
         \Conneqt\SpecialPrices\Api\Data\SpecialPriceSearchResultInterfaceFactory $specialPriceSearchResultInterfaceFactory,
-        \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPriceFactory $specialResourceModelFactory
+        \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPriceFactory $specialResourceModelFactory,
+        \Magento\Framework\DB\TransactionFactory $transactionFactory
     ) {
         $this->_specialPriceFactory = $specialPriceFactory;
         $this->_specialPriceCollectionFactory = $specialPriceCollectionFactory;
         $this->_specialPriceSearchResultInterfaceFactory = $specialPriceSearchResultInterfaceFactory;
         $this->specialResourceModelFactory = $specialResourceModelFactory;
+        $this->transactionFactory = $transactionFactory;
     }
 
     /**
@@ -120,5 +127,40 @@ class SpecialPriceRepository implements \Conneqt\SpecialPrices\Api\SpecialPriceR
         $searchResults->setItems($collection->getItems());
 
         return $searchResults;
+    }
+
+    /**
+     * @param \Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface[] $specialPrices
+     * @return \Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface[]
+     */
+    public function bulkUpdate(array $specialPrices)
+    {
+        $transaction = $this->transactionFactory->create();
+
+        foreach ($specialPrices as $specialPrice) {
+            $transaction->addObject($specialPrice);
+        }
+
+        $transaction->save();
+
+        return $specialPrices;
+    }
+
+    /**
+     * @param int[] $specialPriceIds
+     * @return bool
+     */
+    public function bulkDelete(array $specialPriceIds)
+    {
+        $specialPricesToDelete = $this->_specialPriceCollectionFactory->create()
+                                            ->addFieldToFilter('entity_id', ['in' => $specialPriceIds]);
+
+        try {
+            $specialPricesToDelete->walk('delete');
+        } catch (\Exception $ex) {
+            return false;
+        }
+
+        return true;
     }
 }

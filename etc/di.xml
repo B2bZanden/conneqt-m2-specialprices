@@ -11,4 +11,8 @@
             </argument>
         </arguments>
     </virtualType>
+
+    <type name="Magento\Catalog\Pricing\Price\FinalPrice">
+        <plugin name="modifyFinalPrice" type="Conneqt\SpecialPrices\Plugin\ModifyFinalPrice" />
+    </type>
 </config>
