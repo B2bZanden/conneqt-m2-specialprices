@@ -6,7 +6,7 @@
         "conneqt/m2-base": ">=1.0"
     },
     "type": "magento2-module",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "license": "MIT",
     "authors": [
         {
