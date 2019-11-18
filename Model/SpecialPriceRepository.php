@@ -135,13 +135,9 @@ class SpecialPriceRepository implements \Conneqt\SpecialPrices\Api\SpecialPriceR
      */
     public function bulkUpdate(array $specialPrices)
     {
-        $transaction = $this->transactionFactory->create();
-
         foreach ($specialPrices as $specialPrice) {
-            $transaction->addObject($specialPrice);
+            $specialPrice->getResource()->save($specialPrice);
         }
-
-        $transaction->save();
 
         return $specialPrices;
     }
