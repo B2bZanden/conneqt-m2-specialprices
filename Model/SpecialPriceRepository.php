@@ -20,19 +20,31 @@ class SpecialPriceRepository implements \Conneqt\SpecialPrices\Api\SpecialPriceR
      * @var \Magento\Framework\DB\TransactionFactory
      */
     private $transactionFactory;
+    /**
+     * @var \Conneqt\SpecialPrices\Api\SpecialPriceCalculatorInterface
+     */
+    private $specialPriceCalculator;
+    /**
+     * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+     */
+    private $productCollectionFactory;
 
     public function __construct(
         SpecialPriceFactory $specialPriceFactory,
         \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPrice\CollectionFactory $specialPriceCollectionFactory,
         \Conneqt\SpecialPrices\Api\Data\SpecialPriceSearchResultInterfaceFactory $specialPriceSearchResultInterfaceFactory,
         \Conneqt\SpecialPrices\Model\ResourceModel\SpecialPriceFactory $specialResourceModelFactory,
-        \Magento\Framework\DB\TransactionFactory $transactionFactory
+        \Magento\Framework\DB\TransactionFactory $transactionFactory,
+        \Conneqt\SpecialPrices\Api\SpecialPriceCalculatorInterface $specialPriceCalculator,
+        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
     ) {
         $this->_specialPriceFactory = $specialPriceFactory;
         $this->_specialPriceCollectionFactory = $specialPriceCollectionFactory;
         $this->_specialPriceSearchResultInterfaceFactory = $specialPriceSearchResultInterfaceFactory;
         $this->specialResourceModelFactory = $specialResourceModelFactory;
         $this->transactionFactory = $transactionFactory;
+        $this->specialPriceCalculator = $specialPriceCalculator;
+        $this->productCollectionFactory = $productCollectionFactory;
     }
 
     /**
@@ -162,5 +174,23 @@ class SpecialPriceRepository implements \Conneqt\SpecialPrices\Api\SpecialPriceR
         }
 
         return true;
+    }
+
+    /**
+     * @param \Conneqt\SpecialPrices\Api\Data\CalculateRequestInterface $calculateRequest
+     * @return double
+     */
+    public function calculate(\Conneqt\SpecialPrices\Api\Data\CalculateRequestInterface $calculateRequest)
+    {
+        $productModel = $this->productCollectionFactory->create()
+            ->removeAllFieldsFromSelect()
+            ->addAttributeToSelect('price')
+            ->addIdFilter($calculateRequest->getProductId())->getFirstItem();
+
+        if ($productModel->getId()) {
+            return $this->specialPriceCalculator->calculate($calculateRequest->getProductId(), $calculateRequest->getCustomerId(), $productModel->getData('price'), $calculateRequest->getQuantity());
+        } else {
+            return 0;
+        }
     }
 }

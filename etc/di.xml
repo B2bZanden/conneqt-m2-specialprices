@@ -3,14 +3,7 @@
     <preference for="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" type="Conneqt\SpecialPrices\Model\SpecialPriceRepository" />
     <preference for="Conneqt\SpecialPrices\Api\Data\SpecialPriceInterface" type="Conneqt\SpecialPrices\Model\SpecialPrice" />
     <preference for="Conneqt\SpecialPrices\Api\Data\SpecialPriceSearchResultInterface" type="Conneqt\SpecialPrices\Model\SpecialPriceSearchResult" />
-
-    <virtualType name="Magento\Catalog\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
-        <arguments>
-            <argument name="prices" xsi:type="array">
-                <item name="conneqt_special_price" xsi:type="string">Conneqt\SpecialPrices\Pricing\Price\SpecialPrice</item>
-            </argument>
-        </arguments>
-    </virtualType>
+    <preference for="Conneqt\SpecialPrices\Api\Data\CalculateRequestInterface" type="Conneqt\SpecialPrices\Model\CalculateRequest" />
 
     <type name="Magento\Catalog\Pricing\Price\FinalPrice">
         <plugin name="modifyFinalPrice" type="Conneqt\SpecialPrices\Plugin\ModifyFinalPrice" />

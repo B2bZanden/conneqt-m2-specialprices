@@ -46,4 +46,10 @@ interface SpecialPriceRepositoryInterface
      * @return bool
      */
     public function bulkDelete(array $specialPriceIds);
+
+    /**
+     * @param \Conneqt\SpecialPrices\Model\CalculateRequest $calculateRequest
+     * @return double
+     */
+    public function calculate(\Conneqt\SpecialPrices\Api\Data\CalculateRequestInterface $calculateRequest);
 }

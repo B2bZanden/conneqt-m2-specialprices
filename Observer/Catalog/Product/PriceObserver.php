@@ -36,7 +36,7 @@ class PriceObserver implements \Magento\Framework\Event\ObserverInterface
         $finalPrice = $this->specialPriceCalculator->calculate(
             $product->getId(),
             $customerId,
-            $product->getPriceInfo()->getPrice(\Magento\Catalog\Pricing\Price\BasePrice::PRICE_CODE)->getValue(),
+            $product->getData('price'),
             $qty
         );
 

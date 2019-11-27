@@ -12,6 +12,12 @@
             <resource ref="Conneqt_Base::special_prices" />
         </resources>
     </route>
+    <route method="POST" url="/V1/conneqt_specialprices_calculate">
+        <service class="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" method="calculate"/>
+        <resources>
+            <resource ref="Conneqt_Base::special_prices" />
+        </resources>
+    </route>
     <route method="POST" url="/V1/conneqt_specialprices">
         <service class="Conneqt\SpecialPrices\Api\SpecialPriceRepositoryInterface" method="save"/>
         <resources>
