@@ -1,9 +1,9 @@
-define(['jquery', 'uiComponent'], function ($, Component) {
+define(['jquery', 'uiComponent', 'mage/translate'], function ($, Component, $tr) {
 
     var self;
     return Component.extend({
         initialize: function () {
-            $('*[data-role="priceBox"]').html('<span>Loading...</span>');
+            $('*[data-role="priceBox"]').html('<span>' + $tr('Loading...') + '</span>');
 
             self = this;
             this._super();
