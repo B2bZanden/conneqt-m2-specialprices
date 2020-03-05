@@ -16,7 +16,7 @@ class HidePricing implements \Magento\Framework\Event\ObserverInterface
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        if ($this->request->getModuleName() === 'pricing') {
+        if ($this->request->getModuleName() === 'pricing' || ($this->request->getModuleName() === 'searchautocomplete' && $this->request->getActionName() === 'suggest')) {
             return;
         }
 
