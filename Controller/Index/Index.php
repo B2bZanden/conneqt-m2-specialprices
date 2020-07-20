@@ -72,7 +72,9 @@ class Index extends \Magento\Framework\App\Action\Action
                 );
             }
 
-            $response->setData(['prices' => $productPriceHtml]);
+            $updatePrices = $this->_view->getLayout()->createBlock(\Conneqt\SpecialPrices\Block\Updater::class)->setProduct($productCollection->getFirstItem())->toHtml();
+
+            $response->setData(['prices' => $productPriceHtml, 'updater' => $updatePrices]);
         } else {
             $response->setData(['error' => 'No product ids in request']);
         }

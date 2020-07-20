@@ -21,6 +21,9 @@ define(['jquery', 'uiComponent', 'mage/translate'], function ($, Component, $tr)
                     $('*[data-role="priceBox"]').each(function (index, priceBox) {
                          $(priceBox).replaceWith(result.prices[$(priceBox).data('product-id')]);
                     });
+
+                    $('.product-add-form').after(result.updater);
+                    $('.product-info-main').trigger('contentUpdated');
                 }
             })
         },
