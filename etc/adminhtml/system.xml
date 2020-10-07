@@ -11,6 +11,28 @@
             <group id="settings" translate="label" showInDefault="1" showInWebsite="1" showInStore="0">
                 <label>Settings</label>
             </group>
+            <group id="caching" sortOrder="1000" translate="label" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Price Result Caching</label>
+
+                <field id="enabled" translate="label" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="redis_host" translate="label" type="text" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Redis Host</label>
+                </field>
+                <field id="redis_port" translate="label" type="text" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Redis Port</label>
+                </field>
+                <field id="ttl" translate="label comment" type="text" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Cache TTL</label>
+                    <comment>The number of seconds the price result should be cached.</comment>
+                </field>
+                <field id="invalidate" translate="label" type="button" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Invalidate Cache</label>
+                    <frontend_model>Conneqt\SpecialPrices\Block\System\Config\Form\Field\InvalidateCache</frontend_model>
+                </field>
+            </group>
         </section>
     </system>
 </config>
