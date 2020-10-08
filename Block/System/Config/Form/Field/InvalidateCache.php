@@ -28,7 +28,7 @@ class InvalidateCache extends \Magento\Config\Block\System\Config\Form\Field
             'id' => 'invalidate_conneqt_price_cache',
             'label' => $this->getLabel(),
             'onclick' => "setLocation('" . $this->getInvalidateCacheUrl() . "')",
-            'after_html' => '<p class="note"><span>' . __('Currently cached price results: %1', count($this->cache->getKeys('conneqt_sp'))) . '</span></p>'
+            'after_html' => $this->cache->isEnabled() ? '<p class="note"><span>' . __('Currently cached price results: %1', count($this->cache->getKeys('conneqt_sp'))) . '</span></p>' : ''
         ];
 
         $html = $buttonBlock->setData($data)->toHtml();
