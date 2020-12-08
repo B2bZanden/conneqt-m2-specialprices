@@ -8,4 +8,8 @@
     <type name="Magento\Catalog\Pricing\Price\FinalPrice">
         <plugin name="modifyFinalPrice" type="Conneqt\SpecialPrices\Plugin\ModifyFinalPrice" />
     </type>
+
+    <type name="Magento\Framework\View\Element\AbstractBlock">
+        <plugin name="remove_block" type="Conneqt\SpecialPrices\Plugin\RemoveBlockWhenDisabled" />
+    </type>
 </config>
