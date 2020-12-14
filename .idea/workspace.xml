@@ -31,9 +31,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1112775d-8645-4213-8111-bbd7c0aecbb3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Block/Script.php" beforeDir="false" afterPath="$PROJECT_DIR$/Block/Script.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/module.xml" beforeDir="false" afterPath="$PROJECT_DIR$/etc/module.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/frontend/templates/script.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/templates/script.phtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +77,7 @@
       <workItem from="1607434095440" duration="637000" />
       <workItem from="1607438324748" duration="5000" />
       <workItem from="1607438413678" duration="8000" />
-      <workItem from="1607949554936" duration="1162000" />
+      <workItem from="1607949554936" duration="1386000" />
     </task>
     <servers />
   </component>
