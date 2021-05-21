@@ -51,7 +51,7 @@ class Index extends \Magento\Framework\App\Action\Action
 
         if ($productIds) {
             $productCollection = $this->productCollectionFactory->create()
-                ->addIdFilter($productIds);
+                ->addIdFilter($productIds)->addPriceData();
 
             $productPriceHtml = [];
 
