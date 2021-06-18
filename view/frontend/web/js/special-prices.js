@@ -19,7 +19,7 @@ define(['jquery', 'uiComponent', 'mage/translate'], function ($, Component, $tr)
                 type: 'POST',
                 success: function (result) {
                     $('*[data-role="priceBox"]').each(function (index, priceBox) {
-                         $(priceBox).replaceWith(result.prices[$(priceBox).data('product-id')]);
+                         $(priceBox).html(result.prices[$(priceBox).data('product-id')]);
                     });
 
                     $('.product-add-form').after(result.updater);
