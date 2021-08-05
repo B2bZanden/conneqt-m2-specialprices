@@ -16,7 +16,7 @@ define(['jquery', 'uiComponent', 'mage/translate'], function ($, Component, $tr)
             $.ajax({
                 url: self.url,
                 data: { p: self.productIds },
-                type: 'POST',
+                type: 'GET',
                 success: function (result) {
                     $('*[data-role="priceBox"]').each(function (index, priceBox) {
                          $(priceBox).html(result.prices[$(priceBox).data('product-id')]);
