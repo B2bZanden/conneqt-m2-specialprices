@@ -1,5 +1,5 @@
 {
-    "name": "conneqt/m2-specialprices",
+    "name": "b2bzanden/conneqt-m2-specialprices",
     "description": "Conneqt Special Prices Module for Magento 2",
     "require": {
         "magento/framework": ">=101.0.0",
