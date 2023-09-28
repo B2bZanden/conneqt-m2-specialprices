@@ -9,7 +9,7 @@
         <plugin name="modifyFinalPrice" type="Conneqt\SpecialPrices\Plugin\ModifyFinalPrice" />
     </type>
 
-    <type name="Magento\Framework\View\Element\AbstractBlock">
-        <plugin name="remove_block" type="Conneqt\SpecialPrices\Plugin\RemoveBlockWhenDisabled" />
+    <type name="Conneqt\SpecialPrices\Api\SpecialPriceCalculatorInterface">
+        <plugin name="special_price_caching" type="Conneqt\SpecialPrices\Plugin\ResultCache" />
     </type>
 </config>
