@@ -12,7 +12,7 @@ interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInt
 {
     const ENTITY_ID = 'entity_id';
     const PRODUCT_ID = 'product_id';
-    const CUSTOMER_ENTITY_ID = 'customer_entity_id';
+    const CUSTOMER_ENTITY_ID = 'customer_id';
     const TYPE = 'type';
     const VALUE = 'value';
 

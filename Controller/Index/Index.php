@@ -51,7 +51,7 @@ class Index extends \Magento\Framework\App\Action\Action
 
         if ($productIds) {
             $productCollection = $this->productCollectionFactory->create()
-                ->addIdFilter($productIds);
+                ->addIdFilter($productIds)->addPriceData();
 
             $productPriceHtml = [];
 
@@ -64,7 +64,7 @@ class Index extends \Magento\Framework\App\Action\Action
                     \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE,
                     $product,
                     [
-                        'include_container' => true,
+                        'include_container' => false,
                         'display_minimal_price' => true,
                         'zone' => \Magento\Framework\Pricing\Render::ZONE_DEFAULT,
                         'list_category_page' => true
